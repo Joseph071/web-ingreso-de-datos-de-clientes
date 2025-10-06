@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ingreso de Clientes</title>
+  <!-- Enlaza tu CSS aquí -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Registro de Cliente</h1>
+    <p>Formulario para ingresar y guardar datos básicos de clientes.</p>
+  </header>
+
+  <main>
+    <section class="form-card" aria-labelledby="form-title">
+      <h2 id="form-title">Datos del cliente</h2>
+
+      <form id="client-form" novalidate>
+        <!-- Bloque 1: Identificación -->
+        <fieldset>
+          <legend>Identificación</legend>
+
+          <label for="cliente-nombre">Nombre completo <span aria-hidden="true">*</span></label>
+          <input type="text" id="cliente-nombre" name="nombre" required minlength="2" placeholder="Ej. Juan Pérez" />
+
+          <label for="cliente-cedula">Cédula / ID <span aria-hidden="true">*</span></label>
+          <input type="text" id="cliente-cedula" name="cedula" required pattern="\d{6,15}" placeholder="Solo números" inputmode="numeric" />
+
+          <label for="cliente-fecha-nac">Fecha de nacimiento</label>
+          <input type="date" id="cliente-fecha-nac" name="fecha_nacimiento" />
+        </fieldset>
+
+        <!-- Bloque 2: Contacto -->
+        <fieldset>
+          <legend>Contacto</legend>
+
+          <label for="cliente-email">Correo electrónico <span aria-hidden="true">*</span></label>
+          <input type="email" id="cliente-email" name="email" required placeholder="ejemplo@correo.com" />
+
+          <label for="cliente-telefono">Teléfono</label>
+          <input type="tel" id="cliente-telefono" name="telefono" placeholder="ej: 0987654321" inputmode="tel" />
+
+          <label for="cliente-direccion">Dirección</label>
+          <input type="text" id="cliente-direccion" name="direccion" placeholder="Calle, número, ciudad" />
+        </fieldset>
+
+        <!-- Bloque 3: Empresa / Otros -->
+        <fieldset>
+          <legend>Información adicional</legend>
+
+          <label for="cliente-empresa">Empresa</label>
+          <input type="text" id="cliente-empresa" name="empresa" placeholder="Nombre de la empresa" />
+
+          <label for="cliente-tipo">Tipo de cliente</label>
+          <select id="cliente-tipo" name="tipo">
+            <option value="">-- Seleccionar --</option>
+            <option value="particular">Particular</option>
+            <option value="empresa">Empresa</option>
+            <option value="proveedor">Proveedor</option>
+          </select>
+
+          <label for="cliente-notas">Notas</label>
+          <textarea id="cliente-notas" name="notas" rows="4" placeholder="Observaciones, preferencias, historial..."></textarea>
+        </fieldset>
+
+        <!-- Acciones -->
+        <div class="actions">
+          <button type="submit" id="guardar-btn">Guardar cliente</button>
+          <button type="reset">Limpiar</button>
+        </div>
+
+        <!-- Zona para mensajes de error/éxito controlada por JS -->
+        <div id="form-messages" role="status" aria-live="polite"></div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <small>&copy; <span id="anio"></span> Tu Empresa - Sistema de Registro</small>
+  </footer>
+
+  <!-- Enlaza tu JavaScript aquí -->
+  <script src="script.js"></script>
+</body>
+</html>
