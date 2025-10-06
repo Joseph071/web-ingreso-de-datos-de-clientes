@@ -12,6 +12,8 @@
   --border-color: #2e3b4f;
   --error-color: #ff5c5c;
   --success-color: #2ecc71;
+  --message-success-bg: #2e5032;
+  --message-error-bg: #532626;
 }
 
 /* =============================
@@ -110,7 +112,7 @@ form textarea {
   background-color: var(--input-bg);
   color: var(--text-light);
   font-size: 1rem;
-  transition: all 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 form input:focus,
@@ -139,12 +141,12 @@ form textarea:focus {
   font-size: 1rem;
   cursor: pointer;
   font-weight: bold;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
 }
 
-/* Efecto de brillo al pasar el mouse */
+/* Efecto de brillo */
 .actions button::before {
   content: "";
   position: absolute;
@@ -184,36 +186,42 @@ button[type="reset"]:hover {
    💬 Mensajes animados
    ============================= */
 #form-messages {
-  margin-top: 20px;
-  font-weight: bold;
+  display: none;
   text-align: center;
-  min-height: 25px;
-  position: relative;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.5s ease;
+  font-weight: bold;
+  margin: 15px 0;
+  padding: 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
 }
 
 #form-messages.show {
+  display: block;
   opacity: 1;
-  transform: translateY(0);
+  transform: scale(1.03);
 }
 
 /* Éxito */
+#form-messages.success {
+  background-color: var(--message-success-bg);
+  color: var(--success-color);
+  border: 1px solid #1f3a23;
+  box-shadow: 0 0 10px rgba(46, 80, 50, 0.3);
+}
+
+#form-messages.error {
+  background-color: var(--message-error-bg);
+  color: var(--error-color);
+  border: 1px solid #772828;
+  box-shadow: 0 0 10px rgba(114, 28, 36, 0.3);
+}
+
 #form-messages.success::before {
   content: "✅ ";
 }
 
 #form-messages.error::before {
   content: "⚠️ ";
-}
-
-#form-messages.success {
-  color: var(--success-color);
-}
-
-#form-messages.error {
-  color: var(--error-color);
 }
 
 /* =============================
@@ -241,37 +249,4 @@ footer {
   .actions button {
     margin: 5px 0;
   }
-}
-
-
-
-
-
-#form-messages {
-  display: none;
-  text-align: center;
-  font-weight: bold;
-  margin: 15px 0;
-  padding: 12px;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
-
-#form-messages.success {
-  background-color: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
-  box-shadow: 0 0 10px rgba(21, 87, 36, 0.2);
-}
-
-#form-messages.error {
-  background-color: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
-  box-shadow: 0 0 10px rgba(114, 28, 36, 0.2);
-}
-
-#form-messages.show {
-  opacity: 1;
-  transform: scale(1.03);
 }
